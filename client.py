@@ -7,7 +7,7 @@ Drives the full 3-phase distributed Kerberos protocol:
   Phase 3: Authenticates to the service server
 
 Usage:
-    python client.py --user alice --password password123 --service SERVICE1
+    python client.py --user user1 --password password123 --service SERVICE1
 """
 
 import argparse

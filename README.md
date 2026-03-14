@@ -67,7 +67,7 @@ python service_server.py --id SERVICE1 --port 7001
 
 #### Step 3: Run Client
 ```bash
-python client.py --user alice --service SERVICE1
+python client.py --user user1 --service SERVICE1
 ```
 
 #### Step 4: Run Attack Scenarios
@@ -93,9 +93,9 @@ python attacks.py
 
 | Username | Password |
 |---|---|
-| alice | password123 |
-| bob | securepwd456 |
-| charlie | mypassword789 |
+| user1 | password1 |
+| user2 | password2 |
+| user3 | password3 |
 
 ## Attack Scenarios
 

@@ -216,7 +216,12 @@ class TicketGrantingServer:
         """Start the TGS node server."""
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.bind(('localhost', self.port))
+        try:
+            server.bind(('localhost', self.port))
+        except OSError as e:
+            print(f"[{self.authority_id}] ERROR: Port {self.port} is busy — {e}")
+            server.close()
+            sys.exit(1)
         server.listen(5)
 
         print(f"[{self.authority_id}] Ticket Granting Server listening on port {self.port}")

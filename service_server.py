@@ -192,7 +192,12 @@ class ServiceServer:
         """Start the service server."""
         server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.bind(('localhost', self.port))
+        try:
+            server.bind(('localhost', self.port))
+        except OSError as e:
+            print(f"[{self.service_id}] ERROR: Port {self.port} is busy — {e}")
+            server.close()
+            sys.exit(1)
         server.listen(5)
 
         print(f"[{self.service_id}] Service Server listening on port {self.port}")

@@ -63,7 +63,7 @@ def create_test_ticket():
     """Create a test ticket payload."""
     session_key = generate_aes_key()
     return create_ticket_payload(
-        client_id="alice",
+        client_id="user1",
         service_id="SERVICE1",
         session_key=session_key,
         lifetime=3600,
@@ -189,7 +189,7 @@ def attack_replay_old_signature():
 
     # Create an old legitimate ticket
     old_ticket = create_ticket_payload(
-        client_id="alice",
+        client_id="user1",
         service_id="SERVICE1",
         session_key=generate_aes_key(),
         lifetime=3600,
